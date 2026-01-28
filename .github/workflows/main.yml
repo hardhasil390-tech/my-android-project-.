@@ -1,0 +1,14 @@
+name: Build
+on: [push]
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ArtemSBulgakov/buildozer-action@v1
+        with:
+          command: buildozer android debug
+      - uses: actions/upload-artifact@v2
+        with:
+          name: my-apk
+          path: bin/*.apk
